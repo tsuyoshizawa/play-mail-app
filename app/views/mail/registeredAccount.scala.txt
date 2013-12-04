@@ -1,0 +1,9 @@
+@(account: Account)(implicit lang: Lang)
+@lang match {
+    case Lang("ja", _) => {
+進捗どうですか？ @account.name & @account.mailAddress
+    }
+    case _ => {
+How is your progress? @account.name & @account.mailAddress
+    }
+}

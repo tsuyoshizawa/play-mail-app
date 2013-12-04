@@ -1,0 +1,19 @@
+@(accountForm: Form[Account])(implicit request: RequestHeader)
+<html>
+    <head>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+    </head>
+    <body>
+        @helper.form(action = routes.Application.submit) {
+            @helper.inputText(accountForm("name"))
+            @helper.inputText(accountForm("email"))
+
+            <input type="submit" value="Send" />
+        }
+
+        @request.flash.get("success").map { message =>
+        <div>@message</div>
+        }
+    </body>
+</html>
